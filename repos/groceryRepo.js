@@ -1,6 +1,6 @@
 let fs = require("fs");
 
-const FILE_NAME = "./assets/groceries.json";
+const FILE_NAME = "./assets/grocerie.json";
 
 let groceryRepo = {
   get: (resolve, reject) => {

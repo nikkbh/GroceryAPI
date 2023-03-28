@@ -1,6 +1,7 @@
 // Express server and create application
 let express = require("express");
 let groceryRepo = require("./repos/groceryRepo.js");
+let errorHelper = require("./helpers/errorHelpers");
 let app = express();
 
 // Use the express router object
@@ -141,6 +142,15 @@ router.delete("/:id", (req, res, next) => {
 
 // Configure router so all routes are prefixed with /api/
 app.use("/api/", router);
+
+// Configure exception logger to console
+app.use(errorHelper.logErrorsToConsole);
+
+// Configure exception logger to console
+app.use(errorHelper.logErrorsToFile);
+
+// // Configure exception middleware last
+// app.use(errorHelper.errorHandler);
 
 // Create server to listen on port 5000
 var server = app.listen(5000, () => {
